@@ -1,0 +1,38 @@
+VAR
+    nbres_mots, nbres_voyelles, nbre_carrac : INTEGER := 0;
+    phrase : STRING;
+    i : INTEGER := 0;
+BEGIN
+    Read(phrase);
+    nbre_carrac := phrase.length;
+    
+
+    FOR i FROM 0 TO phrase.length-1 STEP 1 DO
+        IF (phrase[i] = 'a') OR (phrase[i] = 'A') OR 
+           (phrase[i] = 'e') OR (phrase[i] = 'E') OR 
+           (phrase[i] = 'i') OR (phrase[i] = 'I') OR 
+           (phrase[i] = 'o') OR (phrase[i] = 'O') OR 
+           (phrase[i] = 'u') OR (phrase[i] = 'U') OR 
+           (phrase[i] = 'y') OR (phrase[i] = 'Y') THEN
+            nbres_voyelles := nbres_voyelles + 1;
+        END_IF
+    END_FOR
+    
+    nbres_mots := 1; 
+    FOR i FROM 0 TO phrase.length-1 STEP 1 DO
+        IF (phrase[i] = ' ') THEN
+            nbres_mots := nbres_mots + 1;
+        END_IF
+    END_FOR
+    
+    
+    IF phrase[phrase.length-1] = '.' OR phrase[phrase.length-1] = '!' OR phrase[phrase.length-1] = '?' THEN
+        nbre_carrac := nbre_carrac - 1;
+ END_IF
+ 
+write("Longueur de la phrase : ", nbre_carrac);
+write("Nombre de mots : ", nbres_mots);
+write("Nombre de voyelles : ", nbres_voyelles);
+END
+
+
